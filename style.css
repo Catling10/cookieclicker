@@ -1,0 +1,45 @@
+.card {
+    width: 1000px;
+    height: 1000px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "shop cookie upgrade"
+                        "shop count upgrade"
+                        "shop count upgrade";
+    gap: 20px;
+}
+
+.shop {
+    grid-area: shop;
+}
+
+.cookie-pressed {
+    width: 130px;
+    height: 130px;
+
+}
+.upgrade {
+    grid-area: upgrade;
+}
+.count {
+    grid-area: count;
+    align-self: start;
+}
+
+.container {
+    width: 200px;
+    height: 200px;
+    grid-area: cookie;
+}
+.cookie {
+    width: 100px;
+    height: 100px;
+    transition: 0.05s ease-in-out;
+}
+
+.large-cookie {
+    width: 120px;
+    height: 120px;
+}
+
