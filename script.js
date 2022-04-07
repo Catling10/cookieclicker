@@ -17,7 +17,7 @@ function IncClickPower(){
         cookiesN = cookiesN - shop1PriceTotal;
         cookies.textContent = cookiesN;
         shop1Bought++;
-        shop1PriceTotal = shop1Price + shop1PriceInc;
+        shop1PriceTotal = shop1PriceTotal+shop1PriceInc;
         shop1Price.textContent = shop1PriceTotal;
     } else {
         shopButton.classList.add("shop-item-unavailable");
