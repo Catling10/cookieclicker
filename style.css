@@ -1,6 +1,6 @@
 body {
-    background-color: black;
-    color: beige;
+    background-color: beige;
+    color: black
 }
 .card {
     width: 1000px;
@@ -31,6 +31,7 @@ body {
     grid-area: cookie;
 }
 .cookie {
+    cursor: pointer;
     width: 200px;
     height: 200px;
     transition: 0.05s ease-in-out;
@@ -41,18 +42,35 @@ body {
     height: 220px;
 }
 .shop-item {
+    border: 0.125em solid #1A1A1A;
+    border-radius: 0.5em;
+    cursor: pointer;
     background-color: aqua;
     width: 200px;
     height: 50px;
     transition: 0.5s ease-in-out;
 }
 .shop-item-unavailable {
+    border: 0.125em solid #1A1A1A;
+    cursor: not-allowed;
     background-color: red;
     width: 200px;
     height: 50px;
 }
 .upgrade-item {
+    border-radius: 0.5em;
+    border: 0.125em solid #1A1A1A;
+    cursor: pointer;
     background-color: darkorange;
     width: 200px;
     height: 50px;
 }
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    list-style-type: none;
+}
+
