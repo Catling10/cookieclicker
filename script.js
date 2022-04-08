@@ -9,7 +9,7 @@ let shop1Bought = 1;
 let shop1Price = document.querySelector(".price1");
 let shop1PriceTotal = 10;
 let shop1PriceInc = 10;
-let shopButton = document.querySelector("shop-item");
+let shopButton = document.querySelector(".shop-item");
 
 function IncClickPower(){
     if (cookiesN >= shop1PriceTotal) {
