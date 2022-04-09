@@ -1,12 +1,12 @@
-##Чтобы использовать webpack тебе нужен Nodejs
-Тут есть [https://yvoloboy.ru/kak-dobavit-node-js-na-openserver/][инструкция]
+## Чтобы использовать webpack тебе нужен [Nodejs](https://nodejs.org/en/)
+Тут есть [инструкция](https://yvoloboy.ru/kak-dobavit-node-js-na-openserver/)
 
 Так же могут возникнуть проблемы с python 
-(гугли (Мне помогло: https://github.com/felixrieseberg/windows-build-tools/issues/56#issuecomment-327419416),
+(гугли ([Мне помогло](https://github.com/felixrieseberg/windows-build-tools/issues/56#issuecomment-327419416)),
 я нашел питон в C:\Users\molde\.windows-build-tools\python27 если что))
 
-[ ] Запускаешь в консоли проекта `npm i`
-[ ] Дальше `npm run prod`
+* Запускаешь в консоли проекта `npm i`
+* Дальше `npm run prod`
 
 И все скомпилится в папку dist и по сохранению файла будет перекомпиливаться
 
