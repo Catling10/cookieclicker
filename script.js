@@ -1,3 +1,5 @@
+import "./style.scss";
+
 document.querySelector(".cookie").onclick =
     function clickCookie() {
         this.classList.add("large-cookie");

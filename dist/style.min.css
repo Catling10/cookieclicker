@@ -1,0 +1,169 @@
+@charset "UTF-8";
+body {
+  background-color: beige;
+  color: black;
+}
+
+.card {
+  width: 1000px;
+  height: 400px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "shop cookie upgrade" "shop count upgrade" "shop count upgrade";
+  gap: 20px;
+}
+
+.shop {
+  grid-area: shop;
+}
+
+.upgrade {
+  grid-area: upgrade;
+}
+
+.count {
+  grid-area: count;
+  align-self: start;
+}
+
+.container {
+  width: 250px;
+  height: 250px;
+  grid-area: cookie;
+}
+
+.cookie {
+  cursor: pointer;
+  width: 200px;
+  height: 200px;
+  transition: 0.05s ease-in-out;
+}
+
+.large-cookie {
+  width: 220px;
+  height: 220px;
+}
+
+.shop-item {
+  border: 0.125em solid #1A1A1A;
+  border-radius: 0.5em;
+  cursor: pointer;
+  background-color: aqua;
+  width: 200px;
+  height: 50px;
+  transition: 0.5s ease-in-out;
+}
+
+.shop-item-unavailable {
+  border: 0.125em solid #1A1A1A;
+  cursor: not-allowed;
+  background-color: red;
+  width: 200px;
+  height: 50px;
+}
+
+.upgrade-item {
+  border-radius: 0.5em;
+  border: 0.125em solid #1A1A1A;
+  cursor: pointer;
+  background-color: darkorange;
+  width: 200px;
+  height: 50px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+.fallingCookie {
+  opacity: 0;
+  position: absolute;
+  animation: fallingCookie 2s ease-in-out;
+}
+
+@keyframes fallingCookie {
+  from {
+    opacity: 1;
+    top: 0;
+  }
+  to {
+    top: 1000px;
+  }
+}
+.menu {
+  height: 10px;
+}
+.menu .menu-item {
+  height: 100px;
+}
+
+.menu {
+  height: 10px;
+}
+
+.menu .menu-item {
+  height: 100px;
+}
+
+/*
+То есть в таком варианте, если у нас где то еще есть menu-item,
+ то в случае такой записи, стили применятся только для menu-item внутри menu
+
+ <div class="menu">
+    <div class="menu-item"></div> <------- Здесь применится
+ </div>
+
+ <div class="some-style">
+    <div class="menu-item"></div> <------- Здесь не применится
+ </div>
+ */
+.menu {
+  height: 10px;
+}
+.menu--item {
+  height: 100px;
+}
+
+.menu {
+  height: 10px;
+}
+
+.menu--item {
+  height: 100px;
+}
+
+/*
+    Это применимо для такой записи html кода
+    <div class="menu">
+        <div class="menu--item"></div>
+     </div>
+ */
+.menu {
+  height: 10px;
+}
+.menu:hover {
+  height: 100px;
+}
+
+.menu {
+  height: 10px;
+}
+
+.menu:hover {
+  height: 100px;
+}
+
+.some-class {
+  color: #000;
+  font-size: 4px;
+}
+
+.some-class {
+  color: #000;
+  font-size: 4px;
+}
