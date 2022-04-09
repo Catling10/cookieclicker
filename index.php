@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./dist/style.min.css?id=<?=time()?>">
     <title>Кликер</title>
 </head>
 <body>
@@ -36,6 +36,6 @@
         </ul>
     </div>
 </article>
-<script src="script.js"></script>
+<script src="./dist/index.js?id=<?=time()?>"></script>
 </body>
 </html>
