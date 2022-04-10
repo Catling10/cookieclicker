@@ -4,7 +4,8 @@ document.querySelector(".cookie").onclick =
         setTimeout(() => this.classList.remove("large-cookie"), 50);
         add();
     }
-
+//Todo remove item falling cookie random time change span to button
+//Todo fix visual load bugs; fix babushka being unstoppable
 let cookies = document.querySelector(".count-number")
 let cookiesN = 0;
 let cookiesPerClick = 1;
@@ -87,7 +88,6 @@ document.getElementById('load').onclick = function () {
 }
 
 setInterval(function () {
-    //Todo remove item falling cookie random time change span to button add all the save load values try to add babushka
     document.getElementsByTagName('article')[0]
         .insertAdjacentHTML('beforebegin', "<span class='fallingCookie'>Cookie</span>");
 }, 5000);
