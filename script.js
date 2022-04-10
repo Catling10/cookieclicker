@@ -12,6 +12,13 @@ let shop1Bought = 1;
 let shop1Price = document.querySelector(".price1");
 let shop1PriceTotal = 10;
 let shop1PriceInc = 10;
+let upgr1Price = document.querySelector(".upgrPrice1")
+let upgr1PriceTotal = 100;
+let grannyAmm = 5;
+let grannyAmmInc = 0;
+let grannyPriceInc = 200;
+/*let grannyTimer = setInterval(grannyUpg, 5000)*/
+    //Покупка увеличения печенек за клик
 document.querySelector("#incPower").onclick =
     function () {
         if (cookiesN >= shop1PriceTotal) {
@@ -25,7 +32,27 @@ document.querySelector("#incPower").onclick =
             shopItemUn(this)
         }
     }
-
+    //Функция "Бабушка"
+function grannyUpg () {
+    cookiesN = parseInt(cookiesN) + parseInt(grannyAmm)
+    cookies.textContent = cookiesN;
+}
+    //Покупка пассивных печенек "Бабушка"
+document.querySelector("#granny").onclick =
+    function () {
+    if (cookiesN >= upgr1PriceTotal) {
+        cookiesN = parseInt(cookiesN) - parseInt(upgr1PriceTotal);
+        cookies.textContent = cookiesN;
+        upgr1PriceTotal = parseInt(upgr1PriceTotal) + parseInt(grannyPriceInc);
+        upgr1Price.textContent = " " + upgr1PriceTotal;
+        clearInterval(grannyUpg)
+        setInterval (grannyUpg, 5000)
+    }
+    else {
+        shopItemUn(this)
+    }
+    }
+    //Смена бэкграунда на красный в случае неудачи покупки
 function shopItemUn(e) {
     e.classList.add("shop-item-unavailable");
     setTimeout(() => e.classList.remove("shop-item-unavailable"), 500);
@@ -51,7 +78,6 @@ document.getElementById('save').onclick = function () {
 }
 
 document.getElementById('load').onclick = function () {
-    debugger;
     setCookiesNum(localStorage.getItem('cookiesCount'))
     cookiesPerClick = localStorage.getItem('cookiesPerClick')
     shop1Bought = localStorage.getItem('shop1Bought')

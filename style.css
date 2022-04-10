@@ -52,18 +52,20 @@ body {
 }
 .shop-item-unavailable {
     border: 0.125em solid #1A1A1A;
+    border-radius: 0.5em;
     cursor: not-allowed;
     background-color: red;
     width: 200px;
     height: 50px;
 }
 .upgrade-item {
-    border-radius: 0.5em;
     border: 0.125em solid #1A1A1A;
+    border-radius: 0.5em;
     cursor: pointer;
     background-color: darkorange;
     width: 200px;
     height: 50px;
+    transition: 0.5s ease-in-out;
 }
 
 ul {
