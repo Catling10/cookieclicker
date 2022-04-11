@@ -18,8 +18,8 @@ let upgr1PriceTotal = 100;
 let grannyAmm = 5;
 let grannyAmmInc = 0;
 let grannyPriceInc = 200;
-/*let grannyTimer = setInterval(grannyUpg, 5000)*/
-    //Покупка увеличения печенек за клик
+let grannyTimer = null;
+let grannyInterval;
 document.querySelector("#incPower").onclick =
     function () {
         if (cookiesN >= shop1PriceTotal) {
@@ -33,27 +33,38 @@ document.querySelector("#incPower").onclick =
             shopItemUn(this)
         }
     }
-    //Функция "Бабушка"
-function grannyUpg () {
-    cookiesN = parseInt(cookiesN) + parseInt(grannyAmm)
+
+function grannyUpg(grannyInc) {
+    cookiesN = parseInt(cookiesN) + parseInt(grannyAmm) + grannyInc;
     cookies.textContent = cookiesN;
 }
-    //Покупка пассивных печенек "Бабушка"
+
+let upgrades = {
+    grannies: {
+        amountInc: 5,
+        priceIncrease: 10
+    }
+}
+
+//Покупка пассивных печенек "Бабушка"
 document.querySelector("#granny").onclick =
     function () {
-    if (cookiesN >= upgr1PriceTotal) {
-        cookiesN = parseInt(cookiesN) - parseInt(upgr1PriceTotal);
-        cookies.textContent = cookiesN;
-        upgr1PriceTotal = parseInt(upgr1PriceTotal) + parseInt(grannyPriceInc);
-        upgr1Price.textContent = " " + upgr1PriceTotal;
-        clearInterval(grannyUpg)
-        setInterval (grannyUpg, 5000)
+        if (cookiesN >= upgr1PriceTotal) {
+            cookiesN = parseInt(cookiesN) - parseInt(upgr1PriceTotal);
+            cookies.textContent = cookiesN;
+            upgr1PriceTotal = parseInt(upgr1PriceTotal) + parseInt(grannyPriceInc);
+            upgr1Price.textContent = " " + upgr1PriceTotal;
+            clearInterval(grannyInterval)
+            grannyAmmInc = parseInt(grannyAmmInc) + upgrades.grannies.amountInc;
+            grannyInterval = setInterval(grannyUpg, 5000, grannyAmmInc)
+
+
+        } else {
+            shopItemUn(this)
+        }
     }
-    else {
-        shopItemUn(this)
-    }
-    }
-    //Смена бэкграунда на красный в случае неудачи покупки
+
+//Смена бэкграунда на красный в случае неудачи покупки
 function shopItemUn(e) {
     e.classList.add("shop-item-unavailable");
     setTimeout(() => e.classList.remove("shop-item-unavailable"), 500);
