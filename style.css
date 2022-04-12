@@ -79,7 +79,7 @@ li {
 .fallingCookie {
     opacity: 0;
     position: absolute;
-    animation: fallingCookie 0.5s ease-in-out;
+    animation: fallingCookie 2s ease-in-out;
 }
 
 @keyframes fallingCookie {

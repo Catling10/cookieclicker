@@ -91,10 +91,12 @@ document.getElementById('save').onclick = function () {
 
 document.getElementById('load').onclick = function () {
     setCookiesNum(localStorage.getItem('cookiesCount'))
+    cookiesN = localStorage.getItem('cookiesCount')
     cookiesPerClick = localStorage.getItem('cookiesPerClick')
     shop1Bought = localStorage.getItem('shop1Bought')
     shop1PriceTotal = localStorage.getItem('shop1PriceTotal')
     shop1PriceInc = localStorage.getItem('shop1PriceInc')
+    shop1Price.textContent = (" "+shop1PriceTotal)
     alert('It\'s loaded');
 }
 
