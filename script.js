@@ -5,7 +5,6 @@ document.querySelector(".cookie").onclick =
         add();
     }
 //Todo remove item falling cookie random time change span to button
-//Todo fix visual load bugs; fix babushka being unstoppable
 let cookies = document.querySelector(".count-number")
 let cookiesN = 0;
 let cookiesPerClick = 1;
@@ -20,6 +19,8 @@ let grannyAmmInc = 0;
 let grannyPriceInc = 200;
 let grannyTimer = null;
 let grannyInterval;
+let fallingCookieAmm = 50;
+let fallingCookie;
 document.querySelector("#incPower").onclick =
     function () {
         if (cookiesN >= shop1PriceTotal) {
@@ -71,7 +72,12 @@ function shopItemUn(e) {
 }
 
 function add() {
-    cookiesN = parseInt(cookiesN) + parseInt(cookiesPerClick);
+        cookiesN = parseInt(cookiesN) + parseInt(cookiesPerClick);
+        setCookiesNum(cookiesN);
+}
+
+function fallingCookieAdd() {
+    cookiesN = parseInt(cookiesN) + parseInt(fallingCookieAmm);
     setCookiesNum(cookiesN);
 }
 
@@ -102,5 +108,12 @@ document.getElementById('load').onclick = function () {
 
 setInterval(function () {
     document.getElementsByTagName('article')[0]
-        .insertAdjacentHTML('beforebegin', "<span class='fallingCookie'>Cookie</span>");
-}, 5000);
+        .insertAdjacentHTML('beforebegin', "<div class=\"container2\">\n" +
+            "        <img class= \"fallingCookie\" src=\"img/cookie.svg\" alt=\"\">\n" +
+            "    </div>");
+    document.querySelector(".container2").onclick =
+        function clickFallingCookie() {
+            fallingCookieAdd()
+        }
+    }, 5000);
+
