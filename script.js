@@ -17,10 +17,8 @@ let upgr1PriceTotal = 100;
 let grannyAmm = 5;
 let grannyAmmInc = 0;
 let grannyPriceInc = 200;
-let grannyTimer = null;
 let grannyInterval;
 let fallingCookieAmm = 50;
-let fallingCookie;
 document.querySelector("#incPower").onclick =
     function () {
         if (cookiesN >= shop1PriceTotal) {
@@ -113,8 +111,9 @@ setInterval(function () {
             "    </div>");
     let cookies = document.querySelectorAll(".container2")
     cookies.forEach(cookie => cookie.onclick = () => {
+        debugger;
         fallingCookieAdd()
-        cookie.classList.add(".displayNone")
+        cookie.classList.add("displayNone")
     })
 
 
