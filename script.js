@@ -111,9 +111,12 @@ setInterval(function () {
         .insertAdjacentHTML('beforebegin', "<div class=\"container2\">\n" +
             "        <img class= \"fallingCookie\" src=\"img/cookie.svg\" alt=\"\">\n" +
             "    </div>");
-    document.querySelector(".container2").onclick =
-        function clickFallingCookie() {
-            fallingCookieAdd()
-        }
+    let cookies = document.querySelectorAll(".container2")
+    cookies.forEach(cookie => cookie.onclick = () => {
+        fallingCookieAdd()
+        cookie.classList.add(".displayNone")
+    })
+
+
     }, 5000);
 
