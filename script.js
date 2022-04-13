@@ -41,6 +41,7 @@ function grannyUpg() {
 let up = {
     gr: {
         interval: null,
+        bought: 0,
         priceField: document.querySelector(".upgrPrice1"),
         price: 100,
         priceInc: 200,
@@ -66,6 +67,7 @@ document.querySelector("#granny").onclick =
             up.gr.priceField.textContent = " " + up.gr.price;
             clearInterval(up.gr.interval)
             up.gr.total = parseInt(up.gr.total) + parseInt(up.gr.amountInc)
+            up.gr.bought++
             up.gr.interval = setInterval(grannyUpg, 5000, up.gr.total)
 
 
@@ -122,6 +124,9 @@ document.getElementById('load').onclick = function () {
     up.gr.total = localStorage.getItem('up.gr.total')
     up.gr.amountInc = localStorage.getItem('up.gr.amountInc')
     up.gr.priceField.textContent = (" "+up.gr.price)
+    for (let i = 0; i <= up.gr.bought; i++) {
+        grannyUpg()
+    }
     alert('It\'s loaded');
 }
 
