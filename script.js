@@ -40,8 +40,13 @@ function grannyUpg(grannyInc) {
 
 let upgrades = {
     grannies: {
-        amountInc: 5,
-        priceIncrease: 10
+        priceIncrease: 10,
+        interval: null,
+        priceField: document.querySelector(".upgrPrice1"),
+        price: 100,
+        total: 5,
+        amountInc: 0
+
     }
 }
 
