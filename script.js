@@ -13,11 +13,11 @@ let shop1Price = document.querySelector(".price1");
 let shop1PriceTotal = 10;
 let shop1PriceInc = 10;
 let upgr1Price = document.querySelector(".upgrPrice1")
-let upgr1PriceTotal = 100;
+/*let upgrades.grannies.price = 100;
 let grannyAmm = 5;
 let grannyAmmInc = 0;
-let grannyPriceInc = 200;
-let grannyInterval;
+let upgrades.grannies.priceInc = 200;
+let upgrades.grannies.interval;*/
 let fallingCookieAmm = 50;
 document.querySelector("#incPower").onclick =
     function () {
@@ -33,34 +33,33 @@ document.querySelector("#incPower").onclick =
         }
     }
 
-function grannyUpg(grannyInc) {
-    cookiesN = parseInt(cookiesN) + parseInt(grannyAmm) + grannyInc;
+function grannyUpg() {
+    cookiesN = parseInt(cookiesN) + parseInt(up.gr.total);
     cookies.textContent = cookiesN;
 }
 
-let upgrades = {
-    grannies: {
-        priceIncrease: 10,
+let up = {
+    gr: {
         interval: null,
         priceField: document.querySelector(".upgrPrice1"),
         price: 100,
-        total: 5,
-        amountInc: 0
-
+        priceInc: 200,
+        total: 0,
+        amountInc: 5
     }
 }
 
 //Покупка пассивных печенек "Бабушка"
 document.querySelector("#granny").onclick =
     function () {
-        if (cookiesN >= upgr1PriceTotal) {
-            cookiesN = parseInt(cookiesN) - parseInt(upgr1PriceTotal);
+        if (cookiesN >= up.gr.price) {
+            cookiesN = parseInt(cookiesN) - parseInt(up.gr.price);
             cookies.textContent = cookiesN;
-            upgr1PriceTotal = parseInt(upgr1PriceTotal) + parseInt(grannyPriceInc);
-            upgr1Price.textContent = " " + upgr1PriceTotal;
-            clearInterval(grannyInterval)
-            grannyAmmInc = parseInt(grannyAmmInc) + upgrades.grannies.amountInc;
-            grannyInterval = setInterval(grannyUpg, 5000, grannyAmmInc)
+            up.gr.price = parseInt(up.gr.price) + parseInt(up.gr.priceInc);
+            up.gr.priceField.textContent = " " + up.gr.price;
+            clearInterval(up.gr.interval)
+            up.gr.total = parseInt(up.gr.total) + parseInt(up.gr.amountInc)
+            up.gr.interval = setInterval(grannyUpg, 5000, up.gr.total)
 
 
         } else {
