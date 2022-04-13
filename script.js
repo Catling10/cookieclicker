@@ -7,17 +7,6 @@ document.querySelector(".cookie").onclick =
 //Todo remove item falling cookie random time change span to button
 let cookies = document.querySelector(".count-number")
 let cookiesN = 0;
-/*let cookiesPerClick = 1;
-let shop1Bought = 1;
-let shop1Price = document.querySelector(".price1");
-let shop1PriceTotal = 10;
-let shop1PriceInc = 10;
-let upgr1Price = document.querySelector(".upgrPrice1")
-let upgrades.grannies.price = 100;
-let grannyAmm = 5;
-let grannyAmmInc = 0;
-let upgrades.grannies.priceInc = 200;
-let upgrades.grannies.interval;*/
 let fallingCookieAmm = 50;
 document.querySelector("#incPower").onclick =
     function () {
@@ -37,8 +26,9 @@ function grannyUpg() {
     cookiesN = parseInt(cookiesN) + parseInt(up.gr.total);
     cookies.textContent = cookiesN;
 }
-
+//up = Upgrades, все переменные для увеличения
 let up = {
+    //gr = Grannies, всё, что относится к бабушкам
     gr: {
         interval: null,
         bought: 0,
@@ -48,6 +38,7 @@ let up = {
         total: 0,
         amountInc: 5
     },
+    //click = Всё, что относится к печенькам за клик
     click: {
         perClick: 1,
         bought: 1,
@@ -69,8 +60,6 @@ document.querySelector("#granny").onclick =
             up.gr.total = parseInt(up.gr.total) + parseInt(up.gr.amountInc)
             up.gr.bought++
             up.gr.interval = setInterval(grannyUpg, 5000, up.gr.total)
-
-
         } else {
             shopItemUn(this)
         }
@@ -137,7 +126,6 @@ setInterval(function () {
             "    </div>");
     let cookies = document.querySelectorAll(".container2")
     cookies.forEach(cookie => cookie.onclick = () => {
-        debugger;
         fallingCookieAdd()
         cookie.classList.add("displayNone")
     })
