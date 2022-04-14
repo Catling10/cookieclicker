@@ -1,0 +1,18 @@
+{
+    "name": "catling10/cookieclicker",
+    "autoload": {
+        "psr-4": {
+            "Cookieclicker\\": "src/"
+        },
+        "files": [
+            "src/routes.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "segamolder",
+            "email": "molderov@gmail.com"
+        }
+    ],
+    "require": {}
+}
