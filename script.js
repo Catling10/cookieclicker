@@ -8,6 +8,10 @@ document.querySelector(".cookie").onclick =
 let cookies = document.querySelector(".count-number")
 let cookiesN = 0;
 let fallingCookieAmm = 50;
+
+
+
+
 document.querySelector("#incPower").onclick =
     function () {
         if (cookiesN >= up.click.priceTotal) {
@@ -119,11 +123,18 @@ document.getElementById('load').onclick = function () {
     alert('It\'s loaded');
 }
 
+
+// Падающая печенька
 setInterval(function () {
     document.getElementsByTagName('article')[0]
         .insertAdjacentHTML('beforebegin', "<div class=\"container2\">\n" +
             "        <img class= \"fallingCookie\" src=\"img/cookie.svg\" alt=\"\">\n" +
             "    </div>");
+    let cookieImg = document.querySelectorAll(".fallingCookie")
+    let dist = (Math.floor(Math.random()*1000)+1)
+    let str = dist.toString()
+    cookieImg.forEach(element => element.style.left = str+"px")
+
     let cookies = document.querySelectorAll(".container2")
     cookies.forEach(cookie => cookie.onclick = () => {
         fallingCookieAdd()
@@ -132,4 +143,5 @@ setInterval(function () {
 
 
     }, 5000);
+
 
