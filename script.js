@@ -9,28 +9,6 @@ let cookies = document.querySelector(".count-number")
 let cookiesN = 0;
 let fallingCookieAmm = 50;
 let fallingCounter = 1;
-
-
-
-
-document.querySelector("#incPower").onclick =
-    function () {
-        if (cookiesN >= up.click.priceTotal) {
-            up.click.perClick = parseInt(up.click.perClick) + parseInt(up.click.bought);
-            cookiesN = parseInt(cookiesN) - parseInt(up.click.priceTotal);
-            cookies.textContent = cookiesN;
-            up.click.bought++;
-            up.click.priceTotal = parseInt(up.click.priceTotal) + parseInt(up.click.priceInc);
-            up.click.price.textContent = " " + up.click.priceTotal;
-        } else {
-            shopItemUn(this)
-        }
-    }
-
-function grannyUpg() {
-    cookiesN = parseInt(cookiesN) + parseInt(up.gr.total);
-    cookies.textContent = cookiesN;
-}
 //up = Upgrades, все переменные для увеличения
 let up = {
     //gr = Grannies, всё, что относится к бабушкам
@@ -50,9 +28,55 @@ let up = {
         price: document.querySelector(".price1"),
         priceTotal: 10,
         priceInc: 10
+    },
+    //disc = Всё, что относится к скидкам на апгрейды
+    disc: {
+        priceField: document.querySelector(".upgrPrice2"),
+        price: 100,
+        priceInc: 100,
+        bought: 0,
+        amount: 10
     }
 }
+//Покупка скидки на апгрейды
+document.querySelector("#disc").onclick =
+    function () {
+    if (cookiesN >= up.disc.price) {
+        cookiesN = parseInt(cookiesN) - parseInt(up.disc.price);
+        cookies.textContent = cookiesN;
+        up.disc.price = parseInt(up.disc.price) + parseInt(up.disc.priceInc);
+        up.disc.priceField.textContent = " " + up.disc.price;
+        up.disc.bought++;
+        up.click.priceTotal = up.click.priceTotal - (up.click.priceTotal/100)*up.disc.amount;
+        up.click.price.textContent = " "+up.click.priceTotal;
+        up.gr.price = up.gr.price - (up.gr.price/100)*up.disc.amount;
+        up.gr.priceField.textContent = " "+up.gr.price
+        up.disc.amount = up.disc.amount/2;
 
+    } else {
+        shopItemUn(this)
+    }
+    }
+
+//Увеличение печенек за клик
+document.querySelector("#incPower").onclick =
+    function () {
+        if (cookiesN >= up.click.priceTotal) {
+            up.click.perClick = parseInt(up.click.perClick) + parseInt(up.click.bought);
+            cookiesN = parseInt(cookiesN) - parseInt(up.click.priceTotal);
+            cookies.textContent = cookiesN;
+            up.click.bought++;
+            up.click.priceTotal = parseInt(up.click.priceTotal) + parseInt(up.click.priceInc);
+            up.click.price.textContent = " " + up.click.priceTotal;
+        } else {
+            shopItemUn(this)
+        }
+    }
+
+function grannyUpg() {
+    cookiesN = parseInt(cookiesN) + parseInt(up.gr.total);
+    cookies.textContent = cookiesN;
+}
 //Покупка пассивных печенек "Бабушка"
 document.querySelector("#granny").onclick =
     function () {
