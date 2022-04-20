@@ -36,6 +36,14 @@ let up = {
         priceInc: 100,
         bought: 0,
         amount: 10
+    },
+    //upcl = Всё, что относится к увеличенным на время печенькам за клик
+    upcl: {
+        priceField: document.querySelector(".upgrPrice3"),
+        price: 10,
+        bought: 0,
+        amount: 2,
+        interval: null
     }
 }
 //Покупка скидки на апгрейды
@@ -57,7 +65,30 @@ document.querySelector("#disc").onclick =
         shopItemUn(this)
     }
     }
+//Покупка временного увеличения печенек за клик
+document.querySelector("#upclick").onclick =
+    function () {
 
+        if (cookiesN >= up.upcl.price) {
+            up.click.perClick = parseInt(up.click.perClick) * parseInt(up.upcl.amount)
+            cookiesN = parseInt(cookiesN) - parseInt(up.click.priceTotal);
+            cookies.textContent = cookiesN;
+            up.upcl.bought++;
+            setTimeout(upclick, 10000)
+            shopItemUnPerm(this)
+            setTimeout(shopItemUnBack, 10000)
+            debugger;
+
+        } else {
+            shopItemUn(this)
+
+        }
+    }
+function upclick(){
+    up.click.perClick = parseInt(up.click.perClick) / parseInt(up.upcl.amount)
+
+
+}
 //Увеличение печенек за клик
 document.querySelector("#incPower").onclick =
     function () {
@@ -99,7 +130,13 @@ function shopItemUn(e) {
     e.classList.add("shop-item-unavailable");
     setTimeout(() => e.classList.remove("shop-item-unavailable"), 500);
 }
+function shopItemUnPerm(e) {
+    e.classList.add("shop-item-unavailable");
+}
+function shopItemUnBack() {
+    document.querySelector("#upclick").classList.remove("shop-item-unavailable");
 
+}
 function add() {
         cookiesN = parseInt(cookiesN) + parseInt(up.click.perClick);
         setCookiesNum(cookiesN);
