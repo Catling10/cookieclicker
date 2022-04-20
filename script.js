@@ -8,6 +8,7 @@ document.querySelector(".cookie").onclick =
 let cookies = document.querySelector(".count-number")
 let cookiesN = 0;
 let fallingCookieAmm = 50;
+let fallingCounter = 1;
 
 
 
@@ -126,21 +127,19 @@ document.getElementById('load').onclick = function () {
 
 // Падающая печенька
 setInterval(function () {
+//    let randomNumber = (Math.floor(Math.random()*1000)+1).toString();
     document.getElementsByTagName('article')[0]
         .insertAdjacentHTML('beforebegin', "<div class=\"container2\">\n" +
-            "        <img class= \"fallingCookie\" src=\"img/cookie.svg\" alt=\"\">\n" +
+            "        <img id=\'cookie-"+fallingCounter+"\' class= \"fallingCookie\" src=\"img/cookie.svg\" alt=\"\">\n" +
             "    </div>");
-    let cookieImg = document.querySelectorAll(".fallingCookie")
-    let dist = (Math.floor(Math.random()*1000)+1)
-    let str = dist.toString()
-    cookieImg.forEach(element => element.style.left = str+"px")
-
+    document.getElementById('cookie-'+fallingCounter).style.left = (Math.floor(Math.random()*1000)+1).toString()+"px";
+    fallingCounter++;
     let cookies = document.querySelectorAll(".container2")
     cookies.forEach(cookie => cookie.onclick = () => {
         fallingCookieAdd()
         cookie.classList.add("displayNone")
     })
-
+//TODO По каунтеру fallingCounter -1 от последней операции попробовать удалять ноды (попробовал не получилось)
 
     }, 5000);
 
