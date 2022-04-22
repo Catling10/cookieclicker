@@ -8,7 +8,9 @@ document.querySelector(".cookie").onclick =
 let cookies = document.querySelector(".count-number")
 let cookiesN = 0;
 let fallingCookieAmm = 50;
-let fallingCounter = 1;
+let fallingCounter = 3;
+let fallingContCounter = 5;
+let fallingTimeout = 5000
 //up = Upgrades, все переменные для увеличения
 let up = {
     //gr = Grannies, всё, что относится к бабушкам
@@ -44,6 +46,12 @@ let up = {
         bought: 0,
         amount: 2,
         interval: null
+    },
+    rain: {
+        priceField: document.querySelector(".upgrPrice4"),
+        price: 10,
+        bought: 0,
+        interval: 1000
     }
 }
 //Покупка скидки на апгрейды
@@ -77,7 +85,6 @@ document.querySelector("#upclick").onclick =
             setTimeout(upclick, 10000)
             shopItemUnPerm(this)
             setTimeout(shopItemUnBack, 10000)
-            debugger;
 
         } else {
             shopItemUn(this)
@@ -196,20 +203,43 @@ document.getElementById('load').onclick = function () {
 
 // Падающая печенька
 setInterval(function () {
-//    let randomNumber = (Math.floor(Math.random()*1000)+1).toString();
+
     document.getElementsByTagName('article')[0]
-        .insertAdjacentHTML('beforebegin', "<div class=\"container2\">\n" +
-            "        <img id=\'cookie-"+fallingCounter+"\' class= \"fallingCookie\" src=\"img/cookie.svg\" alt=\"\">\n" +
+        .insertAdjacentHTML('beforebegin', "<div id=\'cookieCont-"+fallingContCounter+"\' class=\"container2\">\n" +
+            "        <img id=\'cookie-"+fallingCounter+"\' draggable= \"false\" class= \"fallingCookie\" src=\"img/cookie.svg\" alt=\"\">\n" +
             "    </div>");
     document.getElementById('cookie-'+fallingCounter).style.left = (Math.floor(Math.random()*1000)+1).toString()+"px";
     fallingCounter++;
-    let cookies = document.querySelectorAll(".container2")
+    fallingContCounter++;
+    let counterDecr = fallingContCounter - 2;
+    let remove = document.getElementById('cookieCont-'+counterDecr);
+    remove.remove();
+    let cookies = document.querySelectorAll(".container2");
     cookies.forEach(cookie => cookie.onclick = () => {
         fallingCookieAdd()
         cookie.classList.add("displayNone")
     })
-//TODO По каунтеру fallingCounter -1 от последней операции попробовать удалять ноды (попробовал не получилось)
-
-    }, 5000);
 
 
+    }, timeout = fallingTimeout);
+
+document.querySelector("#letItRain").onclick =
+    function () {
+
+        if (cookiesN >= up.rain.price) {
+            fallingTimeout = fallingTimeout / up.rain.interval
+            cookiesN = parseInt(cookiesN) - parseInt(up.rain.price);
+            cookies.textContent = cookiesN;
+            up.rain.bought++;
+            setTimeout(rainEnd, 10000)
+            shopItemUnPerm(this)
+            setTimeout(shopItemUnBack, 10000)
+
+        } else {
+            shopItemUn(this)
+
+        }
+    }
+function rainEnd() {
+    fallingTimeout = fallingTimeout * up.rain.interval
+}
