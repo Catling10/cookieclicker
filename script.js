@@ -48,6 +48,7 @@ let up = {
         amount: 2,
         interval: null
     },
+    //rain = Всё, что относится к покупке дождя печенек
     rain: {
         priceField: document.querySelector(".upgrPrice4"),
         price: 10,
