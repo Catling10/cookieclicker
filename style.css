@@ -92,7 +92,7 @@ li {
 }
 @keyframes fallingCookie {
     from {
-        top: -100px;
+        top: 0;
     }
 
     to {
