@@ -10,7 +10,8 @@ let cookiesN = 0;
 let fallingCookieAmm = 50;
 let fallingCounter = 1;
 let fallingContCounter = 1;
-let fallingTimeout = 100;
+let fallingTimeout = 5000;
+let cookieInterval;
 
 //up = Upgrades, все переменные для увеличения
 let up = {
@@ -204,34 +205,37 @@ document.getElementById('load').onclick = function () {
     up.disc.amount = localStorage.getItem('up.disc.amount')
 }
 
-
 // Падающая печенька
-setInterval(function () {
+function fallingCookie () {
+    cookieInterval = setInterval(function () {
 //    let randomNumber = (Math.floor(Math.random()*1000)+1).toString();
-    document.getElementsByTagName('article')[0]
-        .insertAdjacentHTML('beforebegin', "<div id=\'cookieCont-"+fallingContCounter+"\' class=\"container2\">\n" +
-            "        <img id=\'cookie-"+fallingCounter+"\' class= \"fallingCookie\" src=\"img/cookie.svg\" alt=\"\">\n" +
-            "    </div>");
-    document.getElementById('cookie-'+fallingCounter).style.left = (Math.floor(Math.random()*1000)+1).toString()+"px";
-    let remove = document.getElementById('cookieCont-'+fallingContCounter)
-    fallingCounter++;
-    fallingContCounter++;
-    function remover () {
-        remove.remove()
-    }
-    setTimeout(remover,  4900)
-    let cookies = document.querySelectorAll(".container2")
-    cookies.forEach(cookie => cookie.onclick = () => {
-        fallingCookieAdd()
-        cookie.classList.add("displayNone")
-    })
-    }, timeout = fallingTimeout);
+        document.getElementsByTagName('article')[0]
+            .insertAdjacentHTML('beforebegin', "<div id='cookieCont-" + fallingContCounter + "' class=\"container2\">\n" +
+                "        <img id=\'cookie-" + fallingCounter + "\' class= \"fallingCookie\" src=\"img/cookie.svg\" alt=\"\">\n" +
+                "    </div>");
+        document.getElementById('cookie-' + fallingCounter).style.left = (Math.floor(Math.random() * 1000) + 1).toString() + "px";
+        let remove = document.getElementById('cookieCont-' + fallingContCounter)
+        fallingCounter++;
+        fallingContCounter++;
 
+        function remover() {
+            remove.remove()
+        }
+
+        setTimeout(remover, 14900)
+        let cookies = document.querySelectorAll(".container2")
+        cookies.forEach(cookie => cookie.onclick = () => {
+            fallingCookieAdd()
+            cookie.classList.add("displayNone")
+        })
+    }, fallingTimeout);
+}
 document.querySelector("#letItRain").onclick =
     function () {
-
         if (cookiesN >= up.rain.price) {
+            clearInterval(cookieInterval);
             fallingTimeout = fallingTimeout / up.rain.interval
+            fallingCookie();
             console.log(fallingTimeout)
             cookiesN = parseInt(cookiesN) - parseInt(up.rain.price);
             cookies.textContent = cookiesN;
@@ -246,6 +250,9 @@ document.querySelector("#letItRain").onclick =
         }
     }
 function rainEnd() {
+    clearInterval(cookieInterval);
     fallingTimeout = fallingTimeout * up.rain.interval
+    fallingCookie();
 }
 
+fallingCookie();
