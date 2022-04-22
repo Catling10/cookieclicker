@@ -10,7 +10,7 @@ let cookiesN = 0;
 let fallingCookieAmm = 50;
 let fallingCounter = 1;
 let fallingContCounter = 1;
-let fallingTimeout = 500;
+let fallingTimeout = 100;
 
 //up = Upgrades, все переменные для увеличения
 let up = {
@@ -52,7 +52,7 @@ let up = {
         priceField: document.querySelector(".upgrPrice4"),
         price: 10,
         bought: 0,
-        interval: 1000
+        interval: 100
     }
 }
 //Покупка скидки на апгрейды
@@ -144,6 +144,7 @@ function shopItemUnPerm(e) {
 }
 function shopItemUnBack() {
     document.querySelector("#upclick").classList.remove("shop-item-unavailable");
+    document.querySelector("#letItRain").classList.remove("shop-item-unavailable");
 
 }
 function add() {
@@ -223,7 +224,6 @@ setInterval(function () {
         fallingCookieAdd()
         cookie.classList.add("displayNone")
     })
-
     }, timeout = fallingTimeout);
 
 document.querySelector("#letItRain").onclick =
@@ -231,6 +231,7 @@ document.querySelector("#letItRain").onclick =
 
         if (cookiesN >= up.rain.price) {
             fallingTimeout = fallingTimeout / up.rain.interval
+            console.log(fallingTimeout)
             cookiesN = parseInt(cookiesN) - parseInt(up.rain.price);
             cookies.textContent = cookiesN;
             up.rain.bought++;
