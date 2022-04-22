@@ -9,7 +9,7 @@ let cookies = document.querySelector(".count-number")
 let cookiesN = 0;
 let fallingCookieAmm = 50;
 let fallingCounter = 1;
-let fallingContCounter = 2;
+let fallingContCounter = 1;
 let counterDecr = fallingContCounter - 1;
 let fallingTimeout = 500
 //up = Upgrades, все переменные для увеличения
@@ -212,6 +212,8 @@ setInterval(function () {
     document.getElementById('cookie-'+fallingCounter).style.left = (Math.floor(Math.random()*1000)+1).toString()+"px";
     fallingCounter++;
     fallingContCounter++;
+    let remove = document.getElementById('cookieCont-'+counterDecr);
+    remove.remove()
     let cookies = document.querySelectorAll(".container2");
     cookies.forEach(cookie => cookie.onclick = () => {
         fallingCookieAdd()
@@ -221,10 +223,9 @@ setInterval(function () {
 
     }, timeout = fallingTimeout);
 
-setInterval(function (){
-    let remove = document.getElementById('cookieCont-'+counterDecr);
-    remove.remove();
-}, 4999);
+
+
+
 
 document.querySelector("#letItRain").onclick =
     function () {
