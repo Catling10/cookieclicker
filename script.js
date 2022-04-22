@@ -161,6 +161,10 @@ document.getElementById('save').onclick = function () {
     localStorage.setItem('up.gr.priceInc', up.gr.priceInc);
     localStorage.setItem('up.gr.total', up.gr.total);
     localStorage.setItem('up.gr.amountInc', up.gr.amountInc);
+    localStorage.setItem('up.disc.price', up.disc.price);
+    localStorage.setItem('up.disc.priceInc', up.gr.priceInc);
+    localStorage.setItem('up.disc.bought', up.disc.bought);
+    localStorage.setItem('up.disc.amount', up.disc.amount);
 
 
     alert('It\'s saved');
@@ -183,6 +187,10 @@ document.getElementById('load').onclick = function () {
         grannyUpg()
     }
     alert('It\'s loaded');
+    up.disc.price = localStorage.getItem('up.disc.price')
+    up.disc.priceInc = localStorage.getItem('up.disc.priceInc')
+    up.disc.bought = localStorage.getItem('up.disc.bought')
+    up.disc.amount = localStorage.getItem('up.disc.amount')
 }
 
 
