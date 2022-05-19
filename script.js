@@ -13,6 +13,14 @@ let fallingContCounter = 1;
 let fallingTimeout = 5000;
 let cookieInterval;
 
+let modal = document.getElementById('id01');
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
 //up = Upgrades, все переменные для увеличения
 let up = {
     //gr = Grannies, всё, что относится к бабушкам
