@@ -141,11 +141,13 @@ li {
 /* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
-    margin: 5px auto; /* 15% from the top and centered */
+    margin: 5% auto 15% auto; /* 15% from the top and centered */
     border: 1px solid #888;
-    width: 40%; /* Could be more or less, depending on screen size */
+    width: 20%; /* Could be more or less, depending on screen size */
 }
-
+.container {
+    padding: 16px;
+}
 /* The Close Button */
 .close {
     /* Position it in the top right corner outside of the modal */
@@ -178,4 +180,12 @@ li {
 @keyframes animatezoom {
     from {transform: scale(0)}
     to {transform: scale(1)}
+}
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
 }
