@@ -37,22 +37,16 @@
         </ul>
     </div>
 </article>
-<!-- The Modal -->
+
 <div id="id01" class="modal">
   <span onclick="document.getElementById('id01').style.display='none'"
         class="close" title="Close Modal">&times;</span>
+    <form action="register.php" method="post" class="modal-content">
 
-    <!-- Modal Content -->
-    <form class="modal-content">
-        <div class="container">
-            <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" required>
+            Логин <input name="login" type="text" required><br>
+            Пароль <input name="password" type="password" required><br>
+            <input name="submit" type="submit" value="Зарегистрироваться">
 
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
-
-            <button class="login" type="submit">Login</button>
-        </div>
     </form>
 </div>
 <script src="script.js"></script>
