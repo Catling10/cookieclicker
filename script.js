@@ -14,20 +14,19 @@ let fallingTimeout = 5000;
 let cookieInterval;
 
 let modal = document.getElementById('id01');
+let modal2 = document.getElementById('id02');
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
-}
-
-let modal2 = document.getElementById('id02');
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
     if (event.target == modal2) {
         modal2.style.display = "none";
     }
 }
+
+
+
 
 //up = Upgrades, все переменные для увеличения
 let up = {
