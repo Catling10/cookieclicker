@@ -17,7 +17,7 @@ function generateCode($length = 6)
 // Соединямся с БД
 $link = mysqli_connect("localhost", "root", "", "cookie-clicker");
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['loginsubmit'])) {
     // Вытаскиваем из БД запись, у которой логин равняется введенному
     $query = mysqli_query($link, "SELECT user_id, user_password FROM users WHERE user_login='" . mysqli_real_escape_string($link, $_POST['login']) . "' LIMIT 1");
     $data = mysqli_fetch_assoc($query);

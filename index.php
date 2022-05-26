@@ -12,8 +12,8 @@
 -->
 <article class="card">
     <button class = "botbut" id="save">Save</button>
-    <button class = "botbut" id="load">Load</button>
-    <button class = "botbut" onclick="document.getElementById('id01').style.display='block'">Login</button>
+    <button class = "botbut" onclick="document.getElementById('id02').style.display='block'">Войти</button>
+    <button class = "botbut" onclick="document.getElementById('id01').style.display='block'">Зарегистрироваться</button>
     <div class="shop">
         <h2 class="shop-title">Shop:</h2>
         <ul class="shop-list">
@@ -38,15 +38,28 @@
     </div>
 </article>
 
+<div id="id02" class="modal">
+  <span onclick="document.getElementById('id02').style.display='none'"
+        class="close" title="Close Modal">&times;</span>
+    <form action="login.php" method="post" class="modal-content">
+        <div class="container">
+            Логин <input name="login" type="text" required><br>
+            Пароль <input name="password" type="password" required><br>
+            <input name="submit" type="submit" value="Войти">
+        </div>
+    </form>
+</div>
+
 <div id="id01" class="modal">
   <span onclick="document.getElementById('id01').style.display='none'"
         class="close" title="Close Modal">&times;</span>
     <form action="register.php" method="post" class="modal-content">
-
+    <div class="container">
             Логин <input name="login" type="text" required><br>
             Пароль <input name="password" type="password" required><br>
+            Повторите пароль <input name="password_repeat" type="password" required><br>
             <input name="submit" type="submit" value="Зарегистрироваться">
-
+    </div>
     </form>
 </div>
 <script src="script.js"></script>
