@@ -30,6 +30,7 @@ $err = [];
         $password = md5(md5(trim($_POST['password'])));
 
         mysqli_query($link,"INSERT INTO users SET user_login='".$login."', user_password='".$password."'");
+        mysqli_query($link,"INSERT INTO user_data SET user_id='".mysqli_insert_id($link)."'");
     header("Location: index.php"); exit();
     }
     else
@@ -41,4 +42,7 @@ $err = [];
         }
     }
 }
+
 ?>
+
+

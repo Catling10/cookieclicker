@@ -1,11 +1,18 @@
+<?
+include "check.php";
+$cookiesN = isset($userdata['cookies_n']) && $userdata['cookies_n'] !== 0 ? $userdata['cookies_n'] : 0;
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-
     <link rel="stylesheet" href="style.css">
     <title>Кликер</title>
 </head>
+<script type="text/javascript">
+    let cookiesN = <?=(int)$cookiesN;?>;
+</script>
 <body>
 <!--
 <h1 class="header">Cookie Clicker</h1>
@@ -14,6 +21,7 @@
     <button class = "botbut" id="save">Save</button>
     <button class = "botbut" onclick="document.getElementById('id02').style.display='block'">Войти</button>
     <button class = "botbut" onclick="document.getElementById('id01').style.display='block'">Зарегистрироваться</button>
+    <p class="user-name"><?php if(isset($userdata['user_login'])) echo $userdata['user_login']; ?></p>
     <div class="shop">
         <h2 class="shop-title">Shop:</h2>
         <ul class="shop-list">
@@ -65,3 +73,4 @@
 <script src="script.js"></script>
 </body>
 </html>
+<!-- TODO  отобразить имя пользователя,  -->

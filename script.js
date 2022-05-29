@@ -1,12 +1,14 @@
+document.querySelector(".count-number").textContent = cookiesN;
+
 document.querySelector(".cookie").onclick =
     function clickCookie() {
         this.classList.add("large-cookie");
         setTimeout(() => this.classList.remove("large-cookie"), 50);
         add();
     }
-//Todo remove item falling cookie random time change span to button
+
 let cookies = document.querySelector(".count-number")
-let cookiesN = 0;
+// let cookiesN = 0;
 let fallingCookieAmm = 50;
 let fallingCounter = 1;
 let fallingContCounter = 1;
@@ -25,7 +27,11 @@ window.onclick = function(event) {
     }
 }
 
-
+/*
+[...document.getElementsByClassName("modal")].forEach((item) => item.onclick= function(e) {
+    e.target.style.display = 'none'
+})
+*/
 
 
 //up = Upgrades, все переменные для увеличения
@@ -189,7 +195,7 @@ document.getElementById('save').onclick = function () {
     localStorage.setItem('up.gr.total', up.gr.total);
     localStorage.setItem('up.gr.amountInc', up.gr.amountInc);
     localStorage.setItem('up.disc.price', up.disc.price);
-    localStorage.setItem('up.disc.priceInc', up.gr.priceInc);
+    localStorage.setItem('up.disc.priceInc', up.disc.priceInc);
     localStorage.setItem('up.disc.bought', up.disc.bought);
     localStorage.setItem('up.disc.amount', up.disc.amount);
 
@@ -197,7 +203,7 @@ document.getElementById('save').onclick = function () {
     alert('It\'s saved');
 }
 
-document.getElementById('load').onclick = function () {
+/*document.getElementById('load').onclick = function () {
     setCookiesNum(localStorage.getItem('cookiesCount'))
     cookiesN = localStorage.getItem('cookiesCount')
     up.click.perClick = localStorage.getItem('up.click.perClick')
@@ -218,7 +224,7 @@ document.getElementById('load').onclick = function () {
     up.disc.priceInc = localStorage.getItem('up.disc.priceInc')
     up.disc.bought = localStorage.getItem('up.disc.bought')
     up.disc.amount = localStorage.getItem('up.disc.amount')
-}
+}*/
 
 // Падающая печенька
 function fallingCookie () {
